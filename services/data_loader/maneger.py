@@ -31,7 +31,7 @@ class Maneger(object):
 
 
 
-    def updat_data(self, data:dict):
+    def updat_data(self,soldier_id, data:dict):
         try:
             if not (type(data['first_name']) == str):
                 raise TypeError('First name must be a string')
@@ -45,7 +45,7 @@ class Maneger(object):
             if not (type(data['rank']) == str):
                 raise TypeError('Rank must be a string')
 
-            soldier = Soldier(data['first_name'],data['last_name'],data['phone_number'],data['rank'])
+            soldier = Soldier(data['first_name'],data['last_name'],data['phone_number'],data['rank'],soldier_id)
             quire1 = soldier.get_quire()
             respond = self.Dal.update_data(quire1)
             return respond
