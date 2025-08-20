@@ -2,8 +2,9 @@ from fastapi import FastAPI
 
 from models.soldier_model import Soldier
 from DAL import DAL
+from maneger import Maneger
 
-
+manager = Maneger()
 app = FastAPI()
 
 @app.get("/")
@@ -12,12 +13,10 @@ def get_root():
 #CRUD
 #Create
 @app.post("/soldier")
-async def post_soldier(data: Soldier):
+async def post_soldier(data: dict):
     try:
-        """
-        TO ADD DAL CONNECTION AND QUERY
-        """
-        return {'Soldier Added':data}
+        res = manager.insert_data(data)
+        return {'Soldier Added':res}
     except Exception as e:
         print(e)
         return {"error": str(e)}
@@ -27,47 +26,39 @@ async def post_soldier(data: Soldier):
 @app.get("/soldiers")
 async def get_soldiers():
     try:
-        """
-        TO ADD DAL CONNECTION AND QUERY
-        """
-        return {'soldiers':[]}
+        res = manager.get_all_data()
+        return {'soldiers':res}
     except Exception as e:
         print(e)
         return {"error": str(e)}
 
 #Singal by ID
 @app.get("/soldier/{soldier_id}")
-async def get_soldier(soldier_id:int):
+async def get_soldier(soldier_id:str):
     try:
-        """
-        TO ADD DAL CONNECTION AND QUERY
-        """
-        return {'soldier_id':soldier_id}
+        res = manager.get_data_by_id(soldier_id)
+        return {'soldier':res}
     except Exception as e:
         print(e)
         return {"error": str(e)}
 
 #Update
 @app.put("/soldier/{soldier_id}")
-async def update_soldier(soldier_id:int,data: Soldier):
+async def update_soldier(soldier_id:str,data: dict):
     try:
-        """
-        TO ADD DAL CONNECTION AND QUERY
-        """
+        res = manager.updat_data(soldier_id,data)
         return {'Soldier':soldier_id,
-                'Updated':data}
+                'Updated':res}
     except Exception as e:
         print(e)
         return {"error": str(e)}
 
 #Delete
 @app.delete("/soldier/{soldier_id}")
-async def delete_soldier(soldier_id:int):
+async def delete_soldier(soldier_id:str):
     try:
-        """
-        TO ADD DAL CONNECTION AND QUERY
-        """
-        return {'Soldier Deleted':soldier_id}
+        res = manager.delete_data_by_id(soldier_id)
+        return {'Soldier Deleted':res}
     except Exception as e:
         print(e)
         return {"error": str(e)}
