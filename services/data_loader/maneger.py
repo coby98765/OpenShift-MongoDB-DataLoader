@@ -33,22 +33,20 @@ class Maneger(object):
 
     def updat_data(self, data:dict):
         try:
-            if not(type(data['first_name'])==str):
+            if not (type(data['first_name']) == str):
                 raise TypeError('First name must be a string')
 
-            if not(type(data['last_name'])==str):
+            if not (type(data['last_name']) == str):
                 raise TypeError('Last name must be a string')
 
-            if not(type(data['phone_number'])==str and len(data['phone_number'])!=10):
+            if not (type(data['phone_number']) == str and len(data['phone_number']) != 10):
                 raise TypeError('Phone number must be a number')
 
-            if not(type(data['rank'])==str):
+            if not (type(data['rank']) == str):
                 raise TypeError('Rank must be a string')
 
-
-
-            ssoldier = Soldier(data['first_name'],data['last_name'],data['phone_number'],data['rank'])
-            quire1 = ssoldier.get_quire()
+            soldier = Soldier(data['first_name'],data['last_name'],data['phone_number'],data['rank'])
+            quire1 = soldier.get_quire()
             respond = self.Dal.update_data(quire1)
             return respond
 
