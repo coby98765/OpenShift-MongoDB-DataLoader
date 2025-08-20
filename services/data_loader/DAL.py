@@ -57,7 +57,7 @@ class DAL:
             self.close_conn()
 
 
-    def update_data(self, update_data : dict[]):
+    def update_data(self, update_data : dict):
         try:
             self.connect()
             db = self.client["enemy_soldiers"]
