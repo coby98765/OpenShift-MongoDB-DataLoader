@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 
 from maneger import Maneger
 from utils import  Utils
@@ -18,7 +18,7 @@ async def post_soldier(data: dict):
         return {'Soldier Added':res}
     except Exception as e:
         print(e)
-        return {"error": str(e)}
+        raise HTTPException(status_code=404, detail={"error": str(e)})
 
 #Read
 #All
@@ -30,7 +30,7 @@ async def get_soldiers():
         return {'soldiers':res}
     except Exception as e:
         print(e)
-        return {"error": str(e)}
+        raise HTTPException(status_code=404, detail={"error": str(e)})
 
 #Singal by ID
 @app.get("/soldier/{soldier_id}")
@@ -41,7 +41,7 @@ async def get_soldier(soldier_id:str):
         return {'soldier':res}
     except Exception as e:
         print(e)
-        return {"error": str(e)}
+        raise HTTPException(status_code=404, detail={"error": str(e)})
 
 #Update
 @app.put("/soldier/{soldier_id}")
@@ -52,7 +52,7 @@ async def update_soldier(soldier_id:str,data: dict):
                 'Updated':res}
     except Exception as e:
         print(e)
-        return {"error": str(e)}
+        raise HTTPException(status_code=404, detail={"error": str(e)})
 
 #Delete
 @app.delete("/soldier/{soldier_id}")
@@ -62,4 +62,4 @@ async def delete_soldier(soldier_id:str):
         return {'Soldier Deleted':res}
     except Exception as e:
         print(e)
-        return {"error": str(e)}
+        raise HTTPException(status_code=404, detail={"error": str(e)})
