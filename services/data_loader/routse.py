@@ -15,7 +15,7 @@ def get_root():
 async def post_soldier(data: dict):
     try:
         res = manager.insert_data(data)
-        return {'Soldier Added':res}
+        return {'Soldier Added':str(res)}
     except Exception as e:
         print(e)
         raise HTTPException(status_code=404, detail={"error": str(e)})
@@ -49,7 +49,7 @@ async def update_soldier(soldier_id:str,data: dict):
     try:
         res = manager.updat_data(soldier_id,data)
         return {'Soldier':soldier_id,
-                'Updated':res}
+                'Updated':str(res)}
     except Exception as e:
         print(e)
         raise HTTPException(status_code=404, detail={"error": str(e)})

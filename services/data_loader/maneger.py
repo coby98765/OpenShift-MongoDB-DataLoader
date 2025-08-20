@@ -1,7 +1,7 @@
 import DAL
 from models.soldier_model import Soldier
 
-class Maneger(object):
+class Maneger:
     def __init__(self):
         self.Dal =DAL.DAL()
 
@@ -26,7 +26,7 @@ class Maneger(object):
             return respond
 
         except Exception as e:
-            raise Exception({"Error": str(e)})
+            raise Exception(e)
 
 
 
@@ -51,7 +51,7 @@ class Maneger(object):
             return respond
 
         except Exception as e:
-            raise Exception({"Error": str(e)})
+            raise Exception(e)
 
 
     def delete_data_by_id(self, soldier_id):
@@ -64,9 +64,11 @@ class Maneger(object):
     def get_data_by_id(self, soldier_id):
         try:
             respond = self.Dal.get_data_by_id(soldier_id)
+            if not respond:
+                raise
             return respond
         except Exception as e:
-            raise Exception({"Error": str(e)})
+            raise Exception(e)
 
 
     def get_all_data(self):
@@ -75,4 +77,4 @@ class Maneger(object):
             return respond
 
         except Exception as e:
-            raise Exception({"Error": str(e)})
+            raise Exception(e)

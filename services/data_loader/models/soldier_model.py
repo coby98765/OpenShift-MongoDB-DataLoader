@@ -9,5 +9,5 @@ class Soldier:
 
     def get_quire(self):
         return {'id':self.id,
-            'quire':{'first_name':self.first_name,'last_name':self.last_name,'phone_number':self.phone_number,'rank':self.rank}}
+            'query':{'first_name':self.first_name,'last_name':self.last_name,'phone_number':self.phone_number,'rank':self.rank}}
 
