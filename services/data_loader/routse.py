@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 
 from maneger import Maneger
+from utils import  Utils
 
 manager = Maneger()
 app = FastAPI()
@@ -25,6 +26,7 @@ async def post_soldier(data: dict):
 async def get_soldiers():
     try:
         res = manager.get_all_data()
+        res = Utils.correct_the_id(res)
         return {'soldiers':res}
     except Exception as e:
         print(e)
@@ -35,6 +37,7 @@ async def get_soldiers():
 async def get_soldier(soldier_id:str):
     try:
         res = manager.get_data_by_id(soldier_id)
+        res = Utils.correct_the_id(res)
         return {'soldier':res}
     except Exception as e:
         print(e)
