@@ -26,7 +26,7 @@ class Maneger(object):
             return respond
 
         except Exception as e:
-            raise e
+            raise Exception({"Error": str(e)})
 
 
 
@@ -51,7 +51,7 @@ class Maneger(object):
             return respond
 
         except Exception as e:
-            raise e
+            raise Exception({"Error": str(e)})
 
 
     def delete_data_by_id(self, soldier_id):
@@ -59,14 +59,14 @@ class Maneger(object):
             respond = self.Dal.delete_data_by_id(soldier_id)
             return respond
         except Exception as e:
-            raise e
+            raise Exception({"Error": str(e)})
 
     def get_data_by_id(self, soldier_id):
         try:
             respond = self.Dal.get_data_by_id(soldier_id)
             return respond
         except Exception as e:
-            raise e
+            raise Exception({"Error": str(e)})
 
 
     def get_all_data(self):
@@ -75,4 +75,4 @@ class Maneger(object):
             return respond
 
         except Exception as e:
-            raise e
+            raise Exception({"Error": str(e)})

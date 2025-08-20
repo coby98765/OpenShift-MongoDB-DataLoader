@@ -24,7 +24,7 @@ class DAL:
             return {"result": result}
         except Exception as e:
             print(e)
-            raise {"Error": e}
+            raise Exception({"Error": str(e)})
         finally:
             self.close_conn()
 
@@ -38,7 +38,7 @@ class DAL:
             return {'result':result}
         except Exception as e:
             print(e)
-            raise {"Error": e}
+            raise Exception({"Error": str(e)})
         finally:
             self.close_conn()
 
@@ -52,7 +52,7 @@ class DAL:
             return {"added":inserted_id}
         except Exception as e:
             print(e)
-            raise {"Error": e}
+            raise Exception({"Error": str(e)})
         finally:
             self.close_conn()
 
@@ -66,7 +66,7 @@ class DAL:
             return {"updated":posted}
         except Exception as e:
             print(e)
-            raise {"Error": e}
+            raise Exception({"Error": str(e)})
         finally:
             self.close_conn()
 
@@ -80,6 +80,6 @@ class DAL:
             return {"deleted":result}
         except Exception as e:
             print(e)
-            raise {"Error": e}
+            raise Exception({"Error": str(e)})
         finally:
             self.close_conn()
