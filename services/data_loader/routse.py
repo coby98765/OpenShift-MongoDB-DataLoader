@@ -1,7 +1,5 @@
 from fastapi import FastAPI
 
-from models.soldier_model import Soldier
-from DAL import DAL
 from maneger import Maneger
 
 manager = Maneger()
